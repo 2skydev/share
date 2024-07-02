@@ -1,0 +1,36 @@
+{
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports"
+  ],
+  "arrowParens": "avoid",
+  "endOfLine": "auto",
+  "singleQuote": true,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "useTabs": false,
+  "printWidth": 100,
+  "semi": false,
+  "importOrder": [
+    "^server-only$",
+    "^next$",
+    "^react",
+    "<THIRD_PARTY_MODULES>",
+    "@rloa-client",
+    "^@/components/ui/.+$",
+    "^@/components/.+$",
+    "^@/features/.+$",
+    "^@/.+$",
+    "^\\..+$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderParserPlugins": [
+    "typescript",
+    "jsx"
+  ],
+  "tailwindFunctions": [
+    "clsx",
+    "cva",
+    "withCn",
+    "cn"
+  ]
+}

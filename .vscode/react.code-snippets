@@ -1,0 +1,19 @@
+{
+  "React component & Type": {
+    "scope": "typescriptreact",
+    "prefix": ["qwe"],
+    "body": [
+      "'use client'\n",
+      "export interface ${TM_FILENAME_BASE}Props {}\n",
+      "const ${TM_FILENAME_BASE} = ({}: ${TM_FILENAME_BASE}Props) => {",
+      "  return (",
+      "    <div>",
+      "      $0",
+      "    </div>",
+      "  )",
+      "}\n",
+      "export default ${TM_FILENAME_BASE}\n"
+    ],
+    "description": "컴포넌트 틀 생성"
+  }
+}
