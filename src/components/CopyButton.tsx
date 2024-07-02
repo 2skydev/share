@@ -11,6 +11,7 @@ import { theme } from '@/styles/theme'
 export interface CopyButtonProps extends ComponentProps<typeof Button> {
   value: string
   iconSize?: string
+  onCopy?: () => void
 }
 
 let timeoutHandle: NodeJS.Timeout
@@ -23,12 +24,14 @@ export const copyText = (value: string, message?: string) => {
 const CheckIconWithMotion = motion(CheckIcon)
 const CopyIconWithMotion = motion(CopyIcon)
 
-const CopyButton = ({ value, children, size, iconSize, ...props }: CopyButtonProps) => {
+const CopyButton = ({ value, children, size, iconSize, onCopy, ...props }: CopyButtonProps) => {
+  console.log('CopyButton', value)
   const [showSuccessIcon, setShowSuccessIcon] = useState(false)
 
   const handleCopy = () => {
     clearTimeout(timeoutHandle)
     navigator.clipboard.writeText(value)
+    onCopy?.()
     setShowSuccessIcon(true)
     timeoutHandle = setTimeout(() => setShowSuccessIcon(false), 2000)
   }
@@ -37,7 +40,7 @@ const CopyButton = ({ value, children, size, iconSize, ...props }: CopyButtonPro
     <Button
       variant="ghost"
       size={size || 'icon'}
-      className="size-8"
+      className={size ? '' : 'size-8'}
       onClick={handleCopy}
       {...props}
     >

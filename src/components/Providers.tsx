@@ -2,6 +2,9 @@
 
 import { ThemeProvider } from 'next-themes'
 
+import { Toaster } from '@/components/ui/sonner'
+import { TooltipProvider } from '@/components/ui/tooltip'
+
 export interface ProvidersProps {
   children: React.ReactNode
 }
@@ -9,7 +12,9 @@ export interface ProvidersProps {
 const Providers = ({ children }: ProvidersProps) => {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
-      {children}
+      <Toaster />
+
+      <TooltipProvider>{children}</TooltipProvider>
     </ThemeProvider>
   )
 }
