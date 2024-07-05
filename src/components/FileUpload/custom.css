@@ -15,3 +15,7 @@
 .filepond--credits {
   @apply !text-primary;
 }
+
+.filepond--root.readonly .filepond--drop-label {
+  min-height: 1em;
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import ConnectCustom from '@/features/connect/components/ConnectCustom'
+// import ConnectCustom from '@/features/connect/components/ConnectCustom'
 import ConnectLink from '@/features/connect/components/ConnectLink'
 import ConnectQRCode from '@/features/connect/components/ConnectQRCode'
 
@@ -15,9 +15,9 @@ const ConnectMethods = ({}: ConnectMethodsProps) => {
 
       <ConnectLink />
 
-      <span>/</span>
+      {/* <span>/</span>
 
-      <ConnectCustom />
+      <ConnectCustom /> */}
     </div>
   )
 }

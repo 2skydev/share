@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 
-import { UserIcon, WaypointsIcon } from 'lucide-react'
+import { ServerIcon, UserIcon, WaypointsIcon } from 'lucide-react'
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 
@@ -37,6 +37,7 @@ const ConnectVisual = ({}: ConnectVisualProps) => {
         <TooltipTrigger>
           <ConnectVisualCircle ref={div2Ref} className="relative">
             <WaypointsIcon className="size-4 text-green-500 dark:text-green-400 absolute -right-2.5 -top-2.5" />
+            <ServerIcon className="size-4 text-black" />
           </ConnectVisualCircle>
         </TooltipTrigger>
 
@@ -44,7 +45,7 @@ const ConnectVisual = ({}: ConnectVisualProps) => {
           <div className="">
             <div className="flex gap-2 items-center">
               <WaypointsIcon className="size-4 text-green-500 dark:text-green-400" />
-              <p>연결하는 과정에서 서버가 중개합니다</p>
+              <p>연결하는 과정에서 상황에 따라 서버가 중개합니다</p>
             </div>
 
             <p className="ml-6 text-muted-foreground">

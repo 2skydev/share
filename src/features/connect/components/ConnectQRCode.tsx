@@ -9,11 +9,11 @@ import useConnection from '@/features/connect/hooks/useConnection'
 export interface ConnectQRCodeProps {}
 
 const ConnectQRCode = ({}: ConnectQRCodeProps) => {
-  const { peerId } = useConnection()
+  const { connectUrl } = useConnection()
 
-  return peerId ? (
+  return connectUrl ? (
     <QRCode
-      value={`http://localhost:3001?id=${peerId}`}
+      value={connectUrl}
       qrStyle="dots"
       logoImage="/favicon.ico"
       logoPadding={2}

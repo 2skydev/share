@@ -25,7 +25,6 @@ const CheckIconWithMotion = motion(CheckIcon)
 const CopyIconWithMotion = motion(CopyIcon)
 
 const CopyButton = ({ value, children, size, iconSize, onCopy, ...props }: CopyButtonProps) => {
-  console.log('CopyButton', value)
   const [showSuccessIcon, setShowSuccessIcon] = useState(false)
 
   const handleCopy = () => {

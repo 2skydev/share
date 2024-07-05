@@ -3,12 +3,12 @@
 import ThemeToggleButton from '@/components/ThemeToggleButton'
 import ScaleMotion from '@/components/motion/ScaleMotion'
 
-import useConnection from '@/features/connect/hooks/useConnection'
+import useInitializeConnection from '@/features/connect/hooks/useInitializeConnection'
 import ConnectScreen from '@/features/connect/screens/ConnectScreen'
 import ShareAssetsScreen from '@/features/share/screens/ShareAssetsScreen'
 
 export default function Home() {
-  const { isConnected } = useConnection()
+  const { isConnected } = useInitializeConnection()
 
   return (
     <>

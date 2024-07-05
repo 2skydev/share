@@ -5,25 +5,17 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 
-import useConnection from '@/features/connect/hooks/useConnection'
+import useShare from '@/features/share/hooks/useShare'
 
 export interface ShareTextProps {}
 
 const ShareText = ({}: ShareTextProps) => {
-  const { connection } = useConnection()
   const [value, setValue] = useState('')
 
+  const { shareText } = useShare()
+
   const handleSubmit = () => {
-    console.log(value)
-
-    connection?.send({
-      action: 'share',
-      payload: {
-        type: 'text',
-        value,
-      },
-    })
-
+    shareText(value)
     setValue('')
   }
 
@@ -31,7 +23,7 @@ const ShareText = ({}: ShareTextProps) => {
     <div>
       <Textarea value={value} onChange={e => setValue(e.target.value)} />
 
-      <Button className="mt-4" onClick={handleSubmit}>
+      <Button size="sm" className="mt-4" onClick={handleSubmit}>
         전송 및 지우기
       </Button>
     </div>
