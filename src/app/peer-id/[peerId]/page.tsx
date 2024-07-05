@@ -6,22 +6,24 @@ import useInitializeConnection from '@/features/connect/hooks/useInitializeConne
 import ConnectScreen from '@/features/connect/screens/ConnectScreen'
 import ShareAssetsScreen from '@/features/share/screens/ShareAssetsScreen'
 
-export default function Home() {
+export default function ConnectByPeerIdPage() {
   const { isConnected } = useInitializeConnection()
 
   return (
-    <div className="container mt-20 space-y-20">
-      {!isConnected && (
-        <ScaleMotion>
-          <ConnectScreen />
-        </ScaleMotion>
-      )}
+    <>
+      <div className="container mt-20 space-y-20">
+        {!isConnected && (
+          <ScaleMotion>
+            <ConnectScreen isReceiver />
+          </ScaleMotion>
+        )}
 
-      {isConnected && (
-        <ScaleMotion>
-          <ShareAssetsScreen />
-        </ScaleMotion>
-      )}
-    </div>
+        {isConnected && (
+          <ScaleMotion>
+            <ShareAssetsScreen />
+          </ScaleMotion>
+        )}
+      </div>
+    </>
   )
 }

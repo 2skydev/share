@@ -62,11 +62,6 @@ const useInitializeShare = (connection?: DataConnection | null) => {
 
         break
       }
-
-      case 'clipboard': {
-        console.log(data.payload.value)
-        break
-      }
     }
   }
 

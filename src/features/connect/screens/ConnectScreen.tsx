@@ -4,10 +4,12 @@ import ConnectMethods from '@/features/connect/components/ConnectMethods'
 import ConnectVisual from '@/features/connect/components/ConnectVisual'
 import useConnection from '@/features/connect/hooks/useConnection'
 
-export interface ConnectScreenProps {}
+export interface ConnectScreenProps {
+  isReceiver?: boolean
+}
 
-const ConnectScreen = ({}: ConnectScreenProps) => {
-  const { isConnected, isReceiver } = useConnection()
+const ConnectScreen = ({ isReceiver }: ConnectScreenProps) => {
+  const { isConnected } = useConnection()
 
   return (
     <section className="space-y-8">

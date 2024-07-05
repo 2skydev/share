@@ -5,14 +5,10 @@ import { toast } from 'sonner'
 
 import useConnection from '@/features/connect/hooks/useConnection'
 
-const useInitializeConnection = () => {
-  const { queryPeerId, isOpened, connect, isConnected, peer, connection } = useConnection()
+const useInitializeConnection = (connectPeerId?: string) => {
+  const { isOpened, connect, isConnected, peer, connection } = useConnection()
 
   const registerConnectionEvents = (connection: DataConnection) => {
-    connection.on('data', data => {
-      console.log('Data received', data)
-    })
-
     connection.on('close', () => {
       toast.error('상대방과 연결이 종료되었어요.')
     })
@@ -29,17 +25,15 @@ const useInitializeConnection = () => {
     }
   }, [connection])
 
-  // Connect to query peer id
+  // Connect to connectPeerId
   useEffect(() => {
-    if (queryPeerId && isOpened) {
-      console.log('[useEffect] Connecting to peer', queryPeerId)
-      connect(queryPeerId)
+    if (connectPeerId && isOpened) {
+      connect(connectPeerId)
     }
-  }, [queryPeerId, isOpened])
+  }, [connectPeerId, isOpened])
 
   useEffect(() => {
     return () => {
-      console.log('Destroying peer')
       peer?.destroy()
     }
   }, [peer])

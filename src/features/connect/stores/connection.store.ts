@@ -1,4 +1,4 @@
-import { Exome, setExomeId } from 'exome'
+import { Exome } from 'exome'
 import { nanoid } from 'nanoid'
 import Peer, { DataConnection, PeerError, PeerErrorType } from 'peerjs'
 

@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 
 import Providers from '@/components/Providers'
 
+import AppLayout from '@/features/app/components/AppLayout'
+
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -26,7 +28,9 @@ export default function RootLayout({
       </head>
 
       <body className="font-pretendard">
-        <Providers>{children}</Providers>
+        <Providers>
+          <AppLayout>{children}</AppLayout>
+        </Providers>
       </body>
     </html>
   )
