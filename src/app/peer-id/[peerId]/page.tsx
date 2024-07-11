@@ -15,7 +15,7 @@ export default function ConnectByPeerIdPage() {
 
   return (
     <>
-      <div className="container mt-20 space-y-20">
+      <div className="container mt-2 sm:mt-20 pb-10">
         {!isConnected && (
           <ScaleMotion>
             <ConnectScreen isReceiver />

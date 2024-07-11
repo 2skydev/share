@@ -7,8 +7,11 @@ import SharedFilesViewer from '@/features/share/components/SharedFilesViewer'
 import SharedTextViewer from '@/features/share/components/SharedTextViewer'
 import { BlobWithFileMetadata, ShareData } from '@/features/share/types/share.types'
 
+import useResponsive from '@/hooks/useResponsive'
+
 const useShare = () => {
   const { connection } = useConnection()
+  const { isDesktop } = useResponsive()
 
   const send = async (data: ShareData) => {
     if (!connection) return toast.error('공유할 대상과 연결이 되어있지 않습니다')
@@ -89,7 +92,7 @@ const useShare = () => {
         title: '텍스트 공유하기',
         description: (
           <div>
-            <p>아래 텍스트를 공유하시려면 Enter 또는 공유하기 버튼을 눌러주세요</p>
+            <p>아래 텍스트를 공유하시려면 {isDesktop && 'Enter 또는 '}공유하기 버튼을 눌러주세요</p>
             <SharedTextViewer className="mt-6">{text}</SharedTextViewer>
           </div>
         ),

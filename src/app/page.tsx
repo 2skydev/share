@@ -10,7 +10,7 @@ export default function Home() {
   const { isConnected } = useInitializeConnection()
 
   return (
-    <div className="container mt-6 sm:mt-20">
+    <div className="container mt-2 sm:mt-20">
       {!isConnected && (
         <ScaleMotion>
           <ConnectScreen />
