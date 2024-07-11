@@ -1,5 +1,7 @@
 'use client'
 
+import { useParams } from 'next/navigation'
+
 import ScaleMotion from '@/components/motion/ScaleMotion'
 
 import useInitializeConnection from '@/features/connect/hooks/useInitializeConnection'
@@ -7,7 +9,9 @@ import ConnectScreen from '@/features/connect/screens/ConnectScreen'
 import ShareAssetsScreen from '@/features/share/screens/ShareAssetsScreen'
 
 export default function ConnectByPeerIdPage() {
-  const { isConnected } = useInitializeConnection()
+  const { peerId } = useParams<{ peerId: string }>()
+
+  const { isConnected } = useInitializeConnection(peerId)
 
   return (
     <>
