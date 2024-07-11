@@ -1,4 +1,4 @@
-import { CornerDownLeftIcon, CornerDownRightIcon } from 'lucide-react'
+import { CornerDownLeftIcon } from 'lucide-react'
 
 import {
   AlertDialog,
@@ -8,6 +8,14 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog'
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+} from '@/components/ui/drawer'
 import { ScrollArea } from '@/components/ui/scroll-area'
 
 import AsyncButton from '@/components/AsyncButton'
@@ -15,6 +23,7 @@ import { globalAlertDialogStore } from '@/components/GlobalAlertDialog/global-al
 import Kbd from '@/components/Kbd'
 import KeyboardAccessibility from '@/components/KeyboardAccessibility'
 
+import useResponsive from '@/hooks/useResponsive'
 import { useStore } from '@/hooks/useStore'
 
 export const alertDialog = globalAlertDialogStore.create
@@ -33,6 +42,8 @@ export const GlobalAlertDialog = () => {
         remove(id)
       }, 200)
     }
+
+  const { isDesktop } = useResponsive()
 
   return (
     <>
@@ -69,7 +80,9 @@ export const GlobalAlertDialog = () => {
           </AsyncButton>,
         ]
 
-        return (
+        console.log('isDesktop', isDesktop)
+
+        return isDesktop ? (
           <AlertDialog open={item._open} key={item.id}>
             {item.keyboardAccessible && (
               <KeyboardAccessibility
@@ -100,6 +113,30 @@ export const GlobalAlertDialog = () => {
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
+        ) : (
+          <Drawer open={item._open} onOpenChange={value => !value && handleCancel()} key={item.id}>
+            <DrawerContent>
+              <DrawerHeader>
+                <DrawerTitle>{item.title}</DrawerTitle>
+
+                {item.description && (
+                  <DrawerDescription asChild>
+                    <ScrollArea className="max-h-[80vh]">
+                      {typeof item.description === 'string' ? (
+                        item.description.split('\n').map((text, i) => <p key={i}>{text}</p>)
+                      ) : (
+                        <div>{item.description}</div>
+                      )}
+                    </ScrollArea>
+                  </DrawerDescription>
+                )}
+              </DrawerHeader>
+
+              <DrawerFooter className="flex-row [&>button]:flex-1">
+                {item.reverseActions ? actions.reverse() : actions}
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
         )
       })}
     </>

@@ -11,8 +11,12 @@ import useShare from '@/features/share/hooks/useShare'
 import { downloadSharedFiles } from '@/features/share/modules/downloadSharedFiles'
 import { ShareAsset, ShareAssetPrepare, ShareData } from '@/features/share/types/share.types'
 
+import useResponsive from '@/hooks/useResponsive'
+
 const useInitializeShare = (connection?: DataConnection | null) => {
   const { shareText } = useShare()
+
+  const { isDesktop } = useResponsive()
 
   const handleShareAssetPrepare = (data: ShareAssetPrepare) => {
     const prepareMessages = {
@@ -91,7 +95,7 @@ const useInitializeShare = (connection?: DataConnection | null) => {
       title: '클립보드 내용 공유하기',
       description: (
         <div>
-          <p>아래 내용을 공유하시려면 Enter 또는 공유하기 버튼을 눌러주세요</p>
+          <p>아래 내용을 공유하시려면 {isDesktop && 'Enter 또는 '}공유하기 버튼을 눌러주세요</p>
           <SharedTextViewer className="mt-6">{text}</SharedTextViewer>
         </div>
       ),

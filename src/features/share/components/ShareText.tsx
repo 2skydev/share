@@ -21,7 +21,11 @@ const ShareText = ({}: ShareTextProps) => {
 
   return (
     <div>
-      <Textarea value={value} onChange={e => setValue(e.target.value)} />
+      <Textarea
+        value={value}
+        onChange={e => setValue(e.target.value)}
+        onPaste={e => e.stopPropagation()}
+      />
 
       <Button size="sm" className="mt-4" onClick={handleSubmit}>
         전송 및 지우기

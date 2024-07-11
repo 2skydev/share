@@ -11,7 +11,7 @@ export interface AppLayoutProps {
 const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <>
-      <header className="h-16 flex items-center justify-between px-10">
+      <header className="h-16 flex items-center justify-between px-8 sm:px-10">
         <img src="/favicon.ico" alt="logo" className="h-6" />
 
         <ThemeToggleButton />

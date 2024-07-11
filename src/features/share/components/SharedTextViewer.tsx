@@ -1,5 +1,7 @@
 'use client'
 
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+
 import { cn } from '@/utils/tailwind.utils'
 
 export interface SharedTextViewerProps {
@@ -9,14 +11,15 @@ export interface SharedTextViewerProps {
 
 const SharedTextViewer = ({ className, children }: SharedTextViewerProps) => {
   return (
-    <div
+    <ScrollArea
       className={cn(
-        'whitespace-pre overflow-x-scroll border border-border rounded-md p-4',
+        'w-[calc(100vw-2rem-2px)] md:w-[calc(32rem-3rem)] h-64 md:h-64 whitespace-pre border border-border rounded-md p-4',
         className,
       )}
     >
       {children}
-    </div>
+      <ScrollBar orientation="horizontal" />
+    </ScrollArea>
   )
 }
 

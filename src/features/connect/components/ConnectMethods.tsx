@@ -8,10 +8,10 @@ export interface ConnectMethodsProps {}
 
 const ConnectMethods = ({}: ConnectMethodsProps) => {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
       <ConnectQRCode />
 
-      <span>/</span>
+      <span className="hidden sm:block">/</span>
 
       <ConnectLink />
 
