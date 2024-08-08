@@ -20,7 +20,7 @@ export class ConnectionStore extends Exome {
 
     let initPeerId = localStorage.getItem('peerId')
 
-    if (!initPeerId) localStorage['peerId'] = initPeerId = nanoid()
+    if (!initPeerId) localStorage['peerId'] = initPeerId = `share-2skydev${nanoid()}PEER-ID`
 
     this.peer = new Peer(initPeerId)
     this.peer.on('open', this.handleOpen)
